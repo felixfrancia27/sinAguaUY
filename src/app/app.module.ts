@@ -17,8 +17,14 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { ImageDialogComponent } from './image-dialog/image-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import {MatNativeDateModule} from '@angular/material/core';
+// Add this line to import MatDatepickerModule
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { LoginComponent } from './login/login.component';
 
 export function provideSwal() {
   return Swal;
@@ -29,14 +35,19 @@ export function provideSwal() {
     AppComponent,
     HomeComponent,
     MainComponent,
-    ImageDialogComponent
+    
+    ImageDialogComponent,
+         LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatNativeDateModule,
     FormsModule,
+    MatInputModule,
     MatTableModule,
     MatIconModule,
+    MatButtonModule,
     MatDialogModule,
     MatPaginatorModule,
     MatSortModule,
@@ -44,7 +55,10 @@ export function provideSwal() {
     MatFormFieldModule,
     MatSelectModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+
+    // Add this line to import MatDatepickerModule into your app
+    MatDatepickerModule
   ],
   providers: [
     { provide: 'Swal', useFactory: provideSwal }

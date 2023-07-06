@@ -4,8 +4,8 @@ import Swal from 'sweetalert2';
 import { Calificacion } from 'src/app/interface/Calificacion';
 import { ImageDialogComponent } from 'src/app/image-dialog/image-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-
-
+import { MatDatepicker } from '@angular/material/datepicker';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -21,19 +21,60 @@ export class MainComponent implements OnInit {
   public proveedores: any[] = [];
   datasource: any;
   indice: number = 0;
+  public usuario: any; 
   public selectedNumeroPedido: any;
   public datos: any;
   imagenes: string[] = [];
   pidPedidoSeleccionado: number | undefined;
+  estado = 'await';
+  solicitud = {
+    fecha: new Date(),
+    fab: '',
+    articulo: '',
+    color: '',
+    descripcion: '',
+    entra: '',
+    sale: '',
+  };
 
 
-  constructor(private httpService: ServiceService,public dialog: MatDialog) {
+  constructor(private httpService: ServiceService,public dialog: MatDialog,private router: Router) {
     this.field1 = '';
     this.field2 = '';
   }
   displayedColumns: string[] = ['photo', 'CodArtToto', 'rTallles', 'colorToto', 'coincide', 'noCoincide'];
 
   mostrarTabla = false;
+
+
+
+  obtenerUsuario() {
+    return sessionStorage.getItem('Usuario');
+  }
+
+
+  mostrarIngresoSolicitud() {
+    this.estado = 'ingresarSolicitud';
+  }
+
+  mostrarPendientes() {
+    this.estado = 'pendientes';
+  }
+  mostrarRealizados() {
+    this.estado = 'realizados';
+  }
+  logout() {
+    sessionStorage.removeItem('usuario');
+    this.router.navigate(['/login']);
+  }
+  ingresarAjuste(solicitud: any) {
+    // Implementa tu método ingresarAjuste aquí
+    console.log(solicitud);
+    Swal.fire('Éxito', 'La solicitud se ha ingresado correctamente', 'success');
+  }
+
+
+
 
 
   getColumnLabel(column: string): string {
@@ -66,14 +107,6 @@ export class MainComponent implements OnInit {
   }
 
 
-  openImageDialog(imageUrl: string): void {
-    this.dialog.open(ImageDialogComponent, {
-      data: { imageUrl },
-    });
-    position: { top: '20px' }  // Ajusta este valor según tus necesidades
-  }
-
-
   volver() {
     this.mostrarTabla = false;
     this.datasource = null;
@@ -101,7 +134,11 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.obtenerProveedores();
+    this.usuario = this.obtenerUsuario();
+
+    if (!this.usuario) {
+      this.router.navigate(['/login']);
+    }
 
   }
 

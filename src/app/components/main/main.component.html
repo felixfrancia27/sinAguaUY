@@ -1,0 +1,92 @@
+<div class="app-container">
+    <header>
+        <div class="header-content">
+            <img src="assets/logo.png" alt="Logo de la empresa" class="logo">
+            <h1 class="titulo">Sistema Control de Pedidos</h1>
+        </div>
+    </header>
+    <div class="input-container" *ngIf="!mostrarTabla">
+        <div class="input-fields">
+            <div class="input-field">
+                <mat-form-field appearance="outline" class="example-container">
+                    <mat-label for="field1">Seleccione proveedor</mat-label>
+                    <mat-select [(ngModel)]="proveedor" (selectionChange)="seleccionoProveedor()">
+                        <mat-option *ngFor="let prov of proveedores" [value]="prov">
+                            <span class="nro-fabricante">{{ prov.NroFabricante }}</span>
+                            &ndash;
+                            <span class="destinatario">{{ prov.Destinatario }}</span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="input-field">
+                <mat-form-field appearance="outline" class="example-container">
+                    <mat-label for="field1">Nro Pedido:</mat-label>
+                    <mat-select (selectionChange)="pedidoSeleccionado($event.value)">
+                        <mat-option *ngFor="let pedido of pedidos" [value]="pedido.id">{{pedido.NumeroPedido}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="mostrarTabla">
+
+
+        <div class="info-container">
+            <h2 class="info-header">
+                <mat-icon aria-hidden="false" aria-label="Proveedor icon">business</mat-icon>
+                Proveedor: <span class="info-content">{{proveedor.Destinatario}}</span>
+            </h2>
+            <h2 class="info-header">
+                <mat-icon aria-hidden="false" aria-label="Pedido icon">directions_boat</mat-icon>
+                Pedido: <span class="info-content">{{selectedNumeroPedido}}</span>
+            </h2>
+        </div>
+        
+        
+        <div class="table-container">
+            <table mat-table [dataSource]="datasource" class="mat-elevation-z8">
+                <!-- Columnas -->
+                <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+                    <th mat-header-cell *matHeaderCellDef> {{ getColumnLabel(column) }} </th>
+                    <td mat-cell *matCellDef="let element">
+                        <ng-container *ngIf="column === 'coincide' || column === 'noCoincide'; else defaultCell">
+                            <mat-icon (click)="toggleColor(element, column)" 
+                                [style.color]="element[column] === true ? (column === 'coincide' ? 'green' : 'red') : ''">
+                                check_circle
+                            </mat-icon>
+                        </ng-container>
+                        <ng-container *ngIf="column === 'photo'; ">
+                            <img style="height:70px; width:70px;" [src]="element.imageUrl" alt="Imagen de elemento" (click)="openImageDialog(element.imageUrl)">
+                        </ng-container>
+                        
+                        <ng-template #notFotoCell>
+                            <ng-container *ngIf="column !== 'coincide' && column !== 'noCoincide'; else defaultCell">
+                                {{ element[column] }}
+                            </ng-container>
+                        </ng-template>
+                        <ng-template #defaultCell>{{ element[column] }}</ng-template>
+                    </td>
+                </ng-container>
+        
+                <!-- Filas -->
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+                    [style.background-color]="getRowColor(row)">
+                </tr>
+            </table>
+        </div>
+        
+       
+        <div class="botones"> 
+            <button class="elegant-button" (click)="volver()">Volver</button>
+            <button class="elegant-button" (click)="guardar()">Guardar</button></div>
+      </div>
+
+
+
+
+    </div>
+    
+ 
+  

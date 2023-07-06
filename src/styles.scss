@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+// .lb-outer {
+//     max-width: 100px !important;
+//     max-height: 100px !important;
+//   }
+  
+//   .lb-inner {
+//     width: 100px !important;
+//     height: 100px !important;
+//   }
+  
+//   .lb-image {
+//     max-width: 100px !important;
+//     max-height: 100px !important;
+//   }
+
+
+.lightboxOverlay {
+  width: 100vw !important;  /* Ancho de la ventana del navegador */
+  height: 100vh !important; /* Alto de la ventana del navegador */
+}
+
+  

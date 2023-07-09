@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { HomeComponent } from './home/home.component';
-import { MainComponent } from './components/main/main.component';
+import { HomeComponent } from './components/home/home.component';
+
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,14 +18,16 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { ImageDialogComponent } from './image-dialog/image-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
 // Add this line to import MatDatepickerModule
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { LoginComponent } from './login/login.component';
-
+import { PrimeNgModule } from './prime-ng/prime-ng.module';
+import { PrincipalComponent } from './principal/principal.component';
+import { CountdownModule } from 'ngx-countdown';
+import { WelcomeComponent } from './components/main/home/welcome/welcome.component';
+import { BenefitsComponent } from './components/main/home/benefits/benefits.component';
 export function provideSwal() {
   return Swal;
 }
@@ -34,16 +36,18 @@ export function provideSwal() {
   declarations: [
     AppComponent,
     HomeComponent,
-    MainComponent,
-    
-    ImageDialogComponent,
-         LoginComponent
+    BenefitsComponent,
+    WelcomeComponent,
+     PrincipalComponent
+     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatNativeDateModule,
     FormsModule,
+    PrimeNgModule,
+    CountdownModule,
     MatInputModule,
     MatTableModule,
     MatIconModule,

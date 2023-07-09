@@ -1,0 +1,67 @@
+.title {
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.icon {
+  width: 10rem;
+  height: 10rem;
+}
+
+
+.verPromo:hover{ 
+  color: blue;
+  text-decoration: underline;
+}
+
+.benefits {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.benefit {
+
+  margin: 2rem 2rem 0 2rem;
+  img {
+    margin-bottom: 1rem;
+  }
+}
+
+h4, p, a {
+  text-align: center;
+}
+
+a {
+  display: block;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+
+@media (min-width: 1200px) {
+  .title {
+    text-align: center;
+    font-size: 2.5rem;
+  }
+  .icon {
+    width: 10rem;
+    height: 10rem;
+  }
+  .benefits {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 2rem;
+  }
+  .benefit {
+    width: 20rem;
+    margin: 0;
+  }
+
+}

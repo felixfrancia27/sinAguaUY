@@ -1,0 +1,94 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    flex: 1;
+}
+
+.header {
+    background: linear-gradient(135deg, #29ADFF, #003588); 
+
+    color: #ffffff;
+    padding: 30px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logo-container {
+    display: flex;
+    margin-right: 20px; /* Ajusta el valor según la separación deseada */
+    align-items: left;
+}
+
+.logo-container img {
+    width: 100px; /* Ajusta el tamaño del logo según tus necesidades */
+    margin-right: 20px; /* Ajusta el valor según la separación deseada */
+    height: auto;
+}
+
+.countdown-section {
+    text-align: center;
+    margin: 30px auto;
+    font-family: 'Montserrat', sans-serif;
+    padding: 30px;
+    background: linear-gradient(135deg, #29ADFF, #003588); 
+  
+}
+
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-container {
+    text-align: center;
+    margin-right: 20px; /* Ajusta el valor según la separación deseada */
+}
+
+.title {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+
+
+.countdown-days {
+    font-size: 2.4em;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.timeline, .impact-section {
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #fafafa;
+    border-radius: 15px;
+}
+
+.action-section, .contact-section {
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #fafafa;
+    border-radius: 15px;
+}
+
+.footer {
+    background-color: #29ADFF;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+}

@@ -1,0 +1,36 @@
+<section class="pt-5">
+  <div class="div-red py-8 px-3">
+   
+
+    <div class="presentation-div">
+       
+      <div class="presentation">
+        
+        <h1 class="">Programa de Beneficios Pasos by TOTO</h1>
+        <div class="sub-presentation">
+
+
+          <p class=""*ngIf="!isAuth"> Registrate y empezá a generar puntos con tus compras.</p>
+          <p class=""*ngIf="isAuth" >  Empezá a generar puntos con tus compras..</p>
+          <div class="">
+            <button
+              class=""
+              *ngIf="!isAuth"
+              pButton
+              label="Ingresar"
+              routerLink="/login"
+            ></button>
+          </div>
+          <a class=""
+          routerLink="/terms">Ver términos y condiciones</a
+          >
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+</section>
+
+
+
